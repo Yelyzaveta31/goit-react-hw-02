@@ -1,19 +1,23 @@
 import s from "./Options.module.css";
-const Options = ({ handleClick, onReset }) => {
+const Options = ({ onUpdate, onReset, feedback, total }) => {
   return (
     <>
-      <button className={s.btn} onClick={() => handleClick("good")}>
-        Good
-      </button>
-      <button className={s.btn} onClick={() => handleClick("neutral")}>
-        Neutral
-      </button>
-      <button className={s.btn} onClick={() => handleClick("bad")}>
-        Bad
-      </button>
-      <button className={s.btn} onClick={onReset}>
-        Reset
-      </button>
+      <ul className={s.list}>
+        {Object.keys(feedback).map((item) => {
+          return (
+            <li className={s.item} key={item}>
+              <button className={s.btn} onClick={() => onUpdate(item)}>
+                {item}
+              </button>
+            </li>
+          );
+        })}
+        {total > 0 && (
+          <button className={s.btn} onClick={onReset}>
+            Reset
+          </button>
+        )}
+      </ul>
     </>
   );
 };

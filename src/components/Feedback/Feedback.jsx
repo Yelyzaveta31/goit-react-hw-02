@@ -3,16 +3,16 @@ const Feedback = ({ feedback, total, positive }) => {
   return (
     <>
       <ul className={s.feedbackList}>
-        {Object.entries(feedback).map((item, index) => {
+        {feedback.map((item, index) => {
           const [key, value] = item;
           return (
-            <li key={index}>
+            <li className={s.item} key={index}>
               {key}:{value}
             </li>
           );
         })}
-        <li>Total: {total}</li>
-        <li>Positive: {positive}%</li>
+        <li className={s.item}>Total:{total}</li>
+        <li className={s.item}>Positive: {positive}%</li>
       </ul>
     </>
   );
