@@ -1,7 +1,8 @@
-const Feedback = ({ feedback }) => {
+import s from "./Feedback.module.css";
+const Feedback = ({ feedback, total, positive }) => {
   return (
     <>
-      <ul>
+      <ul className={s.feedbackList}>
         {Object.entries(feedback).map((item, index) => {
           const [key, value] = item;
           return (
@@ -10,6 +11,8 @@ const Feedback = ({ feedback }) => {
             </li>
           );
         })}
+        <li>Total: {total}</li>
+        <li>Positive: {positive}%</li>
       </ul>
     </>
   );
